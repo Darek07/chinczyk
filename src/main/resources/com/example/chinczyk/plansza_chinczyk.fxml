@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Polyline?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Circle fx:id="red_schowek1" fill="#cd1414" layoutX="40.0" layoutY="39.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="red_schowek4" fill="#cd1414" layoutX="120.0" layoutY="119.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="red_schowek3" fill="#cd1414" layoutX="40.0" layoutY="119.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="red_schowek2" fill="#cd1414" layoutX="120.0" layoutY="39.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="green_schowek1" fill="#29902f" layoutX="760.0" layoutY="759.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="green_schowek4" fill="#29902f" layoutX="840.0" layoutY="839.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="green_schowek3" fill="#29902f" layoutX="760.0" layoutY="839.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="green_schowek2" fill="#29902f" layoutX="840.0" layoutY="759.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellow_schowek1" fill="#ebce38" layoutX="40.0" layoutY="759.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellow_schowek4" fill="#ebce38" layoutX="120.0" layoutY="839.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellow_schowek3" fill="#ebce38" layoutX="40.0" layoutY="839.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellow_schowek2" fill="#ebce38" layoutX="120.0" layoutY="759.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blue_schwek1" fill="#1381e1" layoutX="760.0" layoutY="39.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blue_schowek4" fill="#1381e1" layoutX="840.0" layoutY="119.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blue_schowek3" fill="#1381e1" layoutX="760.0" layoutY="119.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blue_schowek2" fill="#1381e1" layoutX="840.0" layoutY="39.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="360.0" layoutY="39.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="440.0" layoutY="39.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blue_start" fill="#1381e1" layoutX="520.0" layoutY="39.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellow_start" fill="#ebce38" layoutX="360.0" layoutY="839.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="440.0" layoutY="839.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="520.0" layoutY="839.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="360.0" layoutY="759.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellow_domek1" fill="#ebce38" layoutX="440.0" layoutY="759.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="520.0" layoutY="759.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="360.0" layoutY="679.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellow_domek2" fill="#ebce38" layoutX="440.0" layoutY="679.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="520.0" layoutY="679.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="360.0" layoutY="599.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellow_domek3" fill="#ebce38" layoutX="440.0" layoutY="599.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="520.0" layoutY="599.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="360.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellow_domek4" fill="#ebce38" layoutX="440.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="520.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="red_domek4" fill="#cd1414" layoutX="360.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="green_domek4" fill="#29902f" layoutX="520.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="360.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blue_domek4" fill="#1381e1" layoutX="440.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="520.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="360.0" layoutY="279.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blue_domek3" fill="#1381e1" layoutX="440.0" layoutY="279.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="520.0" layoutY="279.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="360.0" layoutY="199.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blue_domek2" fill="#1381e1" layoutX="440.0" layoutY="199.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="520.0" layoutY="199.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="360.0" layoutY="119.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blue_domek1" fill="#1381e1" layoutX="440.0" layoutY="119.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="520.0" layoutY="119.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="40.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="40.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="red_start" fill="#cd1414" layoutX="40.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="120.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="red_domek1" fill="#cd1414" layoutX="120.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="120.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="200.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="red_domek2" fill="#cd1414" layoutX="200.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="200.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="280.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="red_domek3" fill="#cd1414" layoutX="280.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="280.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="600.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="green_domek3" fill="#29902f" layoutX="600.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="600.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="680.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="green_domek2" fill="#29902f" layoutX="680.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="680.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="760.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="green_domek1" fill="#29902f" layoutX="760.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="760.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="green_start" fill="#29902f" layoutX="840.0" layoutY="519.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="840.0" layoutY="439.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="WHITE" layoutX="840.0" layoutY="359.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Polyline fill="BLACK" layoutX="597.0" layoutY="52.0" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" strokeType="INSIDE" />
+      <Polyline fill="BLACK" layoutX="282.0" layoutY="864.0" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="180.0" strokeType="INSIDE" />
+      <Polyline fill="BLACK" layoutX="36.0" layoutY="301.0" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="270.0" strokeType="INSIDE" />
+      <Polyline fill="BLACK" layoutX="845.0" layoutY="618.0" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="90.0" strokeType="INSIDE" />
+   </children>
+</AnchorPane>
