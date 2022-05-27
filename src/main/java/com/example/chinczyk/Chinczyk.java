@@ -11,7 +11,7 @@ public class Chinczyk extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Chinczyk.class.getResource("plansza_chinczyk.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 880, 880);
+        Scene scene = new Scene(fxmlLoader.load(), 960, 960);
         stage.setTitle("C Z I N C Z Y K");
         stage.setScene(scene);
         stage.setResizable(true);
