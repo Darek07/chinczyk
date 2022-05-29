@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Polyline?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane prefHeight="911.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="gridPane" prefHeight="911.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chinczyk.Controller">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -129,5 +125,25 @@
             <Font size="24.0" />
          </font>
       </Label>
+
+      <Circle fx:id="blue_pionek1" fill="#57b4ff" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+      <Circle fx:id="blue_pionek2" fill="#57b4ff" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+      <Circle fx:id="blue_pionek3" fill="#57b4ff" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+      <Circle fx:id="blue_pionek4" fill="#57b4ff" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+
+      <Circle fx:id="green_pionek1" fill="#46cf4b" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="10" />
+      <Circle fx:id="green_pionek2" fill="#46cf4b" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="10" />
+      <Circle fx:id="green_pionek3" fill="#46cf4b" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="11" />
+      <Circle fx:id="green_pionek4" fill="#46cf4b" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="11" />
+
+      <Circle fx:id="red_pionek1" fill="#ff5a5a" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+      <Circle fx:id="red_pionek2" fill="#ff5a5a" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Circle fx:id="red_pionek3" fill="#ff5a5a" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+      <Circle fx:id="red_pionek4" fill="#ff5a5a" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+      <Circle fx:id="yellow_pionek1" fill="#ffe875" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+      <Circle fx:id="yellow_pionek2" fill="#ffe875" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      <Circle fx:id="yellow_pionek3" fill="#ffe875" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+      <Circle fx:id="yellow_pionek4" fill="#ffe875" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
    </children>
 </GridPane>
