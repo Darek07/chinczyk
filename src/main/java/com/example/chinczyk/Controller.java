@@ -2,6 +2,8 @@ package com.example.chinczyk;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
@@ -117,8 +119,18 @@ public class Controller implements Initializable {
     @FXML
     private Circle yellow_start;
 
+    @FXML
+    private ImageView diceImage;
+
+    private Kostka kostka;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        kostka = new Kostka();
+    }
 
+    @FXML
+    public void pressKostka() {
+        kostka.roll(diceImage);
     }
 }
