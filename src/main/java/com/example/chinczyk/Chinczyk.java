@@ -6,8 +6,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Chinczyk extends Application {
+
+    private List<Player> players = new ArrayList<>(4);
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Chinczyk.class.getResource("plansza_chinczyk.fxml"));
@@ -16,6 +22,13 @@ public class Chinczyk extends Application {
         stage.setScene(scene);
         stage.setResizable(true);
         stage.show();
+        Controller controller = fxmlLoader.getController();
+        Collections.addAll(players,
+                new Player(controller.getPawnsByType(Pawn.PawnType.BLUE)),
+                new Player(controller.getPawnsByType(Pawn.PawnType.GREEN)),
+                new Player(controller.getPawnsByType(Pawn.PawnType.YELLOW)),
+                new Player(controller.getPawnsByType(Pawn.PawnType.RED)));
+        players.get(0).setPlayerTurn(true);
     }
 
     public static void main(String[] args) {

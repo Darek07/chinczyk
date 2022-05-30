@@ -6,38 +6,9 @@ import javafx.geometry.Point2D;
 
 import java.util.*;
 
-public class Pozycja {
+public class Position {
 
-    public enum Direction {
-        UP(0, -1), RIGHT(1, 0), DOWN(0, 1), LEFT(-1, 0), NONE(0, 0);
-        final Point2D coord;
-
-        Direction getNextCounterClockwise() {
-            return switch (this) {
-                case UP -> LEFT;
-                case LEFT -> DOWN;
-                case DOWN -> RIGHT;
-                case RIGHT -> UP;
-                default -> NONE;
-            };
-        }
-
-        Direction getNextClockWise() {
-            return switch (this) {
-                case UP -> RIGHT;
-                case RIGHT -> DOWN;
-                case DOWN -> LEFT;
-                case LEFT -> UP;
-                default -> NONE;
-            };
-        }
-
-        Direction(int x, int y) {
-            this.coord = new Point2D(x, y);
-        }
-    }
-
-    public enum Rodzaj {SCHOWEK, START, PLANSZA, DOMEK}
+    public enum CellType {YARD, START, DEFAULT, HOME}
 
     public static final Point2D BLUE_START = new Point2D(6, 1);
     public static final Point2D GREEN_START = new Point2D(10, 7);
@@ -76,41 +47,33 @@ public class Pozycja {
     }
 
     private Point2D cell;
-    private Rodzaj rodzaj = Rodzaj.SCHOWEK;
+    private CellType cellType = CellType.YARD;
     private Direction dir = Direction.NONE;
 
-    public int getCol() {
-        return (int) cell.getX();
-    }
-
-    public int getRow() {
-        return (int) cell.getY();
-    }
-
-    public void change(Pionek.PionekType type) {
-        if (rodzaj == Rodzaj.SCHOWEK) {
+    public void change(Pawn.PawnType type) {
+        if (cellType == CellType.YARD) {
             switch (type) {
                 case BLUE -> cell = BLUE_START;
                 case GREEN -> cell = GREEN_START;
                 case RED -> cell = RED_START;
                 case YELLOW -> cell = YELLOW_START;
             }
-        } else cell = cell.add(this.dir.coord);
-        if (START_POSITIONS.stream().anyMatch(p -> p.equals(cell))) rodzaj = Rodzaj.START;
-        else if (DOMKI.stream().flatMap(Collection::stream).anyMatch(p -> p.equals(cell))) rodzaj = Rodzaj.DOMEK;
-        else if (rodzaj != Rodzaj.SCHOWEK) rodzaj = Rodzaj.PLANSZA;
+        } else cell = cell.add(this.dir.coordination);
+        if (START_POSITIONS.stream().anyMatch(p -> p.equals(cell))) cellType = CellType.START;
+        else if (DOMKI.stream().flatMap(Collection::stream).anyMatch(p -> p.equals(cell))) cellType = CellType.HOME;
+        else if (cellType != CellType.YARD) cellType = CellType.DEFAULT;
         changeDir(type);
     }
 
-    private void changeDir(Pionek.PionekType type) {
-        if (rodzaj == Rodzaj.START) {
+    private void changeDir(Pawn.PawnType type) {
+        if (cellType == CellType.START) {
             if (cell.equals(BLUE_START)) dir = Direction.DOWN;
             else if (cell.equals(GREEN_START)) dir = Direction.LEFT;
             else if (cell.equals(RED_START)) dir = Direction.RIGHT;
             else if (cell.equals(YELLOW_START)) dir = Direction.UP;
-        } else if (rodzaj != Rodzaj.PLANSZA) return;
+        } else if (cellType != CellType.DEFAULT) return;
 
-        if (DOMKI.stream().flatMap(Collection::stream).anyMatch(p -> p.equals(cell.add(this.dir.coord))))
+        if (DOMKI.stream().flatMap(Collection::stream).anyMatch(p -> p.equals(cell.add(this.dir.coordination))))
             dir = dir.getNextCounterClockwise();
         if (cell.equals(BLUE_START.subtract(2, 0)) ||
                 cell.equals(GREEN_START.subtract(0, 2)) ||
@@ -118,27 +81,22 @@ public class Pozycja {
                 cell.equals(YELLOW_START.subtract(-2, 0)))
             dir = dir.getNextClockWise();
         dir = switch (type) {
-            case BLUE -> cell.add(this.dir.coord).equals(BLUE_START);
-            case GREEN -> cell.add(this.dir.coord).equals(GREEN_START);
-            case RED -> cell.add(this.dir.coord).equals(RED_START);
-            case YELLOW -> cell.add(this.dir.coord).equals(YELLOW_START);
+            case BLUE -> cell.add(this.dir.coordination).equals(BLUE_START);
+            case GREEN -> cell.add(this.dir.coordination).equals(GREEN_START);
+            case RED -> cell.add(this.dir.coordination).equals(RED_START);
+            case YELLOW -> cell.add(this.dir.coordination).equals(YELLOW_START);
         } ? dir.getNextClockWise() : dir;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Pozycja pozycja = (Pozycja) o;
-        return Objects.equals(cell, pozycja.cell);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cell);
-    }
-
-    public Pozycja(int col, int row) {
+    public Position(int col, int row) {
         this.cell = new Point2D(col, row);
+    }
+
+    public int getCol() {
+        return (int) cell.getX();
+    }
+
+    public int getRow() {
+        return (int) cell.getY();
     }
 }

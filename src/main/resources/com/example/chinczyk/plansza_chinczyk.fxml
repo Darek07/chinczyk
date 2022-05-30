@@ -6,7 +6,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="gridPane" prefHeight="911.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chinczyk.Controller">
+<?import com.example.chinczyk.Pawn?>
+<GridPane fx:id="gridPane" prefHeight="911.0" prefWidth="897.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chinczyk.Controller">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -126,24 +127,24 @@
          </font>
       </Label>
 
-      <Circle fx:id="blue_pionek1" fill="#57b4ff" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-      <Circle fx:id="blue_pionek2" fill="#57b4ff" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="1" />
-      <Circle fx:id="blue_pionek3" fill="#57b4ff" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="2" />
-      <Circle fx:id="blue_pionek4" fill="#57b4ff" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+      <Pawn fx:id="blue_pawn1" fill="#57b4ff" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+      <Pawn fx:id="blue_pawn2" fill="#57b4ff" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+      <Pawn fx:id="blue_pawn3" fill="#57b4ff" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+      <Pawn fx:id="blue_pawn4" fill="#57b4ff" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="2" />
 
-      <Circle fx:id="green_pionek1" fill="#46cf4b" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="10" />
-      <Circle fx:id="green_pionek2" fill="#46cf4b" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="10" />
-      <Circle fx:id="green_pionek3" fill="#46cf4b" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="11" />
-      <Circle fx:id="green_pionek4" fill="#46cf4b" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="11" />
+      <Pawn fx:id="green_pawn1" fill="#46cf4b" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="10" />
+      <Pawn fx:id="green_pawn2" fill="#46cf4b" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="10" />
+      <Pawn fx:id="green_pawn3" fill="#46cf4b" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="11" />
+      <Pawn fx:id="green_pawn4" fill="#46cf4b" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="11" />
 
-      <Circle fx:id="red_pionek1" fill="#ff5a5a" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-      <Circle fx:id="red_pionek2" fill="#ff5a5a" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Circle fx:id="red_pionek3" fill="#ff5a5a" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-      <Circle fx:id="red_pionek4" fill="#ff5a5a" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Pawn fx:id="red_pawn1" fill="#ff5a5a" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+      <Pawn fx:id="red_pawn2" fill="#ff5a5a" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Pawn fx:id="red_pawn3" fill="#ff5a5a" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+      <Pawn fx:id="red_pawn4" fill="#ff5a5a" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-      <Circle fx:id="yellow_pionek1" fill="#ffe875" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="10" />
-      <Circle fx:id="yellow_pionek2" fill="#ffe875" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-      <Circle fx:id="yellow_pionek3" fill="#ffe875" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="11" />
-      <Circle fx:id="yellow_pionek4" fill="#ffe875" onMousePressed="#movePionek" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+      <Pawn fx:id="yellow_pawn1" fill="#ffe875" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+      <Pawn fx:id="yellow_pawn2" fill="#ffe875" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      <Pawn fx:id="yellow_pawn3" fill="#ffe875" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+      <Pawn fx:id="yellow_pawn4" fill="#ffe875" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
    </children>
 </GridPane>
