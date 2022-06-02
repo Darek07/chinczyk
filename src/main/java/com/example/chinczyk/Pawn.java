@@ -5,10 +5,10 @@ import javafx.scene.shape.Circle;
 
 public class Pawn extends Circle {
 
-    public enum PawnType {RED, GREEN, YELLOW, BLUE}
+    public enum PawnColor {RED, GREEN, YELLOW, BLUE}
 
     private Position position;
-    private PawnType type;
+    private PawnColor pawnColor;
     private boolean canMove;
 
     public Pawn() {
@@ -24,14 +24,19 @@ public class Pawn extends Circle {
         int column = GridPane.getColumnIndex(this);
         int row = GridPane.getRowIndex(this);
         this.position = new Position(column, row);
-        if (this.getId().startsWith("blue")) { this.type = PawnType.BLUE; }
-        else if (this.getId().startsWith("green")) { this.type = PawnType.GREEN; }
-        else if (this.getId().startsWith("red")) { this.type = PawnType.RED; }
-        else if (this.getId().startsWith("yellow")) { this.type = PawnType.YELLOW; }
+        identifyPawnColor();
+    }
+
+    private void identifyPawnColor() {
+        String id = this.getId();
+        if (id.startsWith("blue")) { this.pawnColor = PawnColor.BLUE; }
+        else if (id.startsWith("green")) { this.pawnColor = PawnColor.GREEN; }
+        else if (id.startsWith("red")) { this.pawnColor = PawnColor.RED; }
+        else if (id.startsWith("yellow")) { this.pawnColor = PawnColor.YELLOW; }
     }
 
     public void move() {
-        position.change(type);
+        position.makeStep(pawnColor);
         GridPane.setColumnIndex(this, position.getCol());
         GridPane.setRowIndex(this, position.getRow());
     }

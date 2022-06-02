@@ -24,10 +24,10 @@ public class Chinczyk extends Application {
         stage.show();
         Controller controller = fxmlLoader.getController();
         Collections.addAll(players,
-                new Player(controller.getPawnsByType(Pawn.PawnType.BLUE)),
-                new Player(controller.getPawnsByType(Pawn.PawnType.GREEN)),
-                new Player(controller.getPawnsByType(Pawn.PawnType.YELLOW)),
-                new Player(controller.getPawnsByType(Pawn.PawnType.RED)));
+                new Player(controller.getPawnsByType(Pawn.PawnColor.BLUE)),
+                new Player(controller.getPawnsByType(Pawn.PawnColor.GREEN)),
+                new Player(controller.getPawnsByType(Pawn.PawnColor.YELLOW)),
+                new Player(controller.getPawnsByType(Pawn.PawnColor.RED)));
         players.get(0).setPlayerTurn(true);
     }
 

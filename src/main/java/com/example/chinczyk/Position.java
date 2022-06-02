@@ -1,102 +1,119 @@
 package com.example.chinczyk;
 
-// Posiada dane statyczne o każdej pozycji
-
 import javafx.geometry.Point2D;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Circle;
 
 import java.util.*;
 
+import com.example.chinczyk.Pawn.PawnColor;
+
 public class Position {
 
-    public enum CellType {YARD, START, DEFAULT, HOME}
+	public enum CellType {YARD, START, DEFAULT, HOME}
 
-    public static final Point2D BLUE_START = new Point2D(6, 1);
-    public static final Point2D GREEN_START = new Point2D(10, 7);
-    public static final Point2D RED_START = new Point2D(0, 5);
-    public static final Point2D YELLOW_START = new Point2D(4, 11);
-    public static final HashSet<Point2D> START_POSITIONS = new HashSet<>(4);
-    public static final HashSet<Point2D> BLUE_DOMEK = new HashSet<>(4);
-    public static final HashSet<Point2D> GREEN_DOMEK = new HashSet<>(4);
-    public static final HashSet<Point2D> RED_DOMEK = new HashSet<>(4);
-    public static final HashSet<Point2D> YELLOW_DOMEK = new HashSet<>(4);
-    public static final HashSet<HashSet<Point2D>> DOMKI = new HashSet<>(4);
+	public static final Map<PawnColor, Circle> START_CELLS = Controller.getStartCells();
+	public static final Set<Circle> HOME_CELLS = Controller.getHomeCells();
 
-    static {
-        Collections.addAll(START_POSITIONS, BLUE_START, GREEN_START, RED_START, YELLOW_START);
-        Collections.addAll(BLUE_DOMEK,
-                new Point2D(5, 2),
-                new Point2D(5, 3),
-                new Point2D(5, 4),
-                new Point2D(5, 5));
-        Collections.addAll(GREEN_DOMEK,
-                new Point2D(6, 6),
-                new Point2D(7, 6),
-                new Point2D(8, 6),
-                new Point2D(9, 6));
-        Collections.addAll(RED_DOMEK,
-                new Point2D(1, 6),
-                new Point2D(2, 6),
-                new Point2D(3, 6),
-                new Point2D(4, 6));
-        Collections.addAll(YELLOW_DOMEK,
-                new Point2D(5, 7),
-                new Point2D(5, 8),
-                new Point2D(5, 9),
-                new Point2D(5, 10));
-        Collections.addAll(DOMKI, BLUE_DOMEK, GREEN_DOMEK, RED_DOMEK, YELLOW_DOMEK);
-    }
+	private Point2D cell;
+	private CellType cellType = CellType.YARD;
+	private Direction dir = Direction.NONE;
 
-    private Point2D cell;
-    private CellType cellType = CellType.YARD;
-    private Direction dir = Direction.NONE;
+	public void makeStep(PawnColor pawnColor) {
+		if (cellType == CellType.YARD) {
+			putOnStartCell(pawnColor);
+		} else {
+			cell = cell.add(dir.coordination);
+		}
+		changeCellType();
+		changeDir(pawnColor);
+	}
 
-    public void change(Pawn.PawnType type) {
-        if (cellType == CellType.YARD) {
-            switch (type) {
-                case BLUE -> cell = BLUE_START;
-                case GREEN -> cell = GREEN_START;
-                case RED -> cell = RED_START;
-                case YELLOW -> cell = YELLOW_START;
-            }
-        } else cell = cell.add(this.dir.coordination);
-        if (START_POSITIONS.stream().anyMatch(p -> p.equals(cell))) cellType = CellType.START;
-        else if (DOMKI.stream().flatMap(Collection::stream).anyMatch(p -> p.equals(cell))) cellType = CellType.HOME;
-        else if (cellType != CellType.YARD) cellType = CellType.DEFAULT;
-        changeDir(type);
-    }
+	private void changeCellType() {
+		if (isAnyMatch(START_CELLS.values(), cell)) {
+			cellType = CellType.START;
+		} else if (isAnyMatch(HOME_CELLS, cell)) {
+			cellType = CellType.HOME;
+		} else {
+			cellType = CellType.DEFAULT;
+		}
+	}
 
-    private void changeDir(Pawn.PawnType type) {
-        if (cellType == CellType.START) {
-            if (cell.equals(BLUE_START)) dir = Direction.DOWN;
-            else if (cell.equals(GREEN_START)) dir = Direction.LEFT;
-            else if (cell.equals(RED_START)) dir = Direction.RIGHT;
-            else if (cell.equals(YELLOW_START)) dir = Direction.UP;
-        } else if (cellType != CellType.DEFAULT) return;
+	/*
+	 * if at home
+	 *      then the direction doesn't change
+	 * if the next cell in the given direction is a home
+	 *      then change the direction counterclockwise
+	 * if on the starting circle
+	 *      then set the direction depending on the color
+	 * if the next circle in the given direction is the starting circle
+	 *  and the color of the pawn matches the color of the starting circle
+	 *      then change the direction clockwise
+	 * if two steps from start
+	 *      then change the direction clockwise
+	 */
+	private void changeDir(PawnColor pawnColor) {
+		if (isAnyMatch(HOME_CELLS, cell)) {
+			return;
+		} else if (isAnyMatch(HOME_CELLS, cell.add(dir.coordination))) {
+			dir = dir.changeCounterClockwise();
+		} else if (isAnyMatch(START_CELLS.values(), cell)) {
+			dir = switch (getStartCellColor(cell)) {
+				case BLUE -> Direction.DOWN;
+				case GREEN -> Direction.LEFT;
+				case RED -> Direction.RIGHT;
+				case YELLOW -> Direction.UP;
+			};
+		} else if (isAnyMatch(START_CELLS.values(), cell.add(dir.coordination))
+				&& getStartCellColor(cell.add(dir.coordination)) == pawnColor) {
+			dir = dir.changeClockWise();
+		} else if (isTwoStepsFromStart())
+			dir = dir.changeClockWise();
+	}
 
-        if (DOMKI.stream().flatMap(Collection::stream).anyMatch(p -> p.equals(cell.add(this.dir.coordination))))
-            dir = dir.getNextCounterClockwise();
-        if (cell.equals(BLUE_START.subtract(2, 0)) ||
-                cell.equals(GREEN_START.subtract(0, 2)) ||
-                cell.equals(RED_START.subtract(0, -2)) ||
-                cell.equals(YELLOW_START.subtract(-2, 0)))
-            dir = dir.getNextClockWise();
-        dir = switch (type) {
-            case BLUE -> cell.add(this.dir.coordination).equals(BLUE_START);
-            case GREEN -> cell.add(this.dir.coordination).equals(GREEN_START);
-            case RED -> cell.add(this.dir.coordination).equals(RED_START);
-            case YELLOW -> cell.add(this.dir.coordination).equals(YELLOW_START);
-        } ? dir.getNextClockWise() : dir;
-    }
+	private boolean isAnyMatch(Collection<Circle> cells, Point2D currentCell) {
+		return cells
+				.stream()
+				.anyMatch(cell ->
+						GridPane.getColumnIndex(cell) == (int) currentCell.getX()
+						&& GridPane.getRowIndex(cell) == (int) currentCell.getY());
+	}
 
-    public Position(int col, int row) {
-        this.cell = new Point2D(col, row);
-    }
+	private PawnColor getStartCellColor(Point2D currentCell) {
+		return START_CELLS
+				.entrySet()
+				.stream()
+				.filter(entry ->
+						GridPane.getColumnIndex(entry.getValue()) == (int) currentCell.getX()
+						&& GridPane.getRowIndex(entry.getValue()) == (int) currentCell.getY())
+				.findFirst()
+				.get()
+				.getKey();
+	}
 
-    public int getCol() {
-        return (int) cell.getX();
-    }
+	private boolean isTwoStepsFromStart() {
+		return isAnyMatch(START_CELLS.values(), cell.add(dir.changeClockWise().coordination.multiply(2)));
+	}
 
-    public int getRow() {
-        return (int) cell.getY();
-    }
+	private void putOnStartCell(PawnColor pawnColor) {
+		Circle startCell = START_CELLS.entrySet()
+				.stream()
+				.filter(entry -> entry.getKey() == pawnColor)
+				.findFirst()
+				.get()
+				.getValue();
+		cell = new Point2D(GridPane.getColumnIndex(startCell), GridPane.getRowIndex(startCell));
+	}
+
+	public Position(int col, int row) {
+		this.cell = new Point2D(col, row);
+	}
+
+	public int getCol() {
+		return (int) cell.getX();
+	}
+
+	public int getRow() {
+		return (int) cell.getY();
+	}
 }

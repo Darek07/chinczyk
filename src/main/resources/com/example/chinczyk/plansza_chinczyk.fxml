@@ -90,7 +90,7 @@
       <Circle fill="WHITE" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
       <Circle fill="WHITE" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.rowIndex="7" />
       <Circle fill="WHITE" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.rowIndex="6" />
-      <Circle fx:id="red_start" fill="#cd1414" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.rowIndex="5" />
+      <Circle fx:id="red_start" fill="#cd1414" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
       <Circle fill="WHITE" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <Circle fx:id="red_domek1" fill="#cd1414" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <Circle fill="WHITE" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
