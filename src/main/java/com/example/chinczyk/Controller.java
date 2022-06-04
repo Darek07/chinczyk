@@ -88,6 +88,26 @@ public class Controller implements Initializable {
     private final Set<Pawn> redPawns = new HashSet<>(4);
     private final Set<Pawn> yellowPawns = new HashSet<>(4);
 
+    private List<Player> players;
+    private int playersNumber = 0;
+    public void setPlayers(int playersNumber) {
+        this.playersNumber = playersNumber;
+    }
+
+    private void initializePlayers() {
+        // todo: uncomment when suport for many players will be prepared
+        // players = new ArrayList<>(playersNumber);
+        players = new ArrayList<>(4);
+
+        Collections.addAll(players,
+            new Player(getPawnsByType(Pawn.PawnColor.BLUE)),
+            new Player(getPawnsByType(Pawn.PawnColor.GREEN)),
+            new Player(getPawnsByType(Pawn.PawnColor.YELLOW)),
+            new Player(getPawnsByType(Pawn.PawnColor.RED))
+        );
+        players.get(0).setPlayerTurn(true);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         startCells.put(PawnColor.BLUE, blueStart);
@@ -108,6 +128,8 @@ public class Controller implements Initializable {
         Stream.of(bluePawns, greenPawns, redPawns, yellowPawns)
                 .flatMap(Collection::stream)
                 .forEach(Pawn::initialize);
+
+        initializePlayers();
     }
 
     public Set<Pawn> getPawnsByType(PawnColor type) {

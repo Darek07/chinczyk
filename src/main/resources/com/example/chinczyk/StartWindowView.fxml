@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0"
+      prefWidth="465.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chinczyk.StartWindowController">
+    <Label prefHeight="35.0" prefWidth="571.0" text="Witaj w cyfrowej odsłonie gry w CHIŃCZYKA">
+        <font>
+            <Font name="System Bold" size="24.0"/>
+        </font>
+    </Label>
+    <Separator prefWidth="200.0"/>
+    <Label text="Wybierz ilość graczy">
+        <VBox.margin>
+            <Insets top="24.0"/>
+        </VBox.margin>
+    </Label>
+    <HBox prefHeight="52.0" prefWidth="568.0">
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <RadioButton fx:id="radioButtonTwoPlayers" layoutX="39.0" layoutY="9.0" mnemonicParsing="false"
+                         text="2 Graczy"/>
+        </Pane>
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <RadioButton fx:id="radioButtonThreePlayers" layoutX="39.0" layoutY="9.0" mnemonicParsing="false"
+                         text="3 Graczy"/>
+        </Pane>
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <RadioButton fx:id="radioButtonFourPlayers" layoutX="39.0" layoutY="9.0" mnemonicParsing="false"
+                         text="4 Graczy"/>
+        </Pane>
+        <VBox.margin>
+            <Insets top="12.0"/>
+        </VBox.margin>
+    </HBox>
+    <VBox prefHeight="93.0" prefWidth="568.0" alignment="CENTER">
+        <Label fx:id="errorLabel"/>
+        <Button fx:id="submitButton" alignment="CENTER" layoutX="169.0" layoutY="39.0" mnemonicParsing="false"
+                text="Rozpocznij grę" textAlignment="CENTER"/>
+    </VBox>
+    <padding>
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
+    </padding>
+</VBox>
