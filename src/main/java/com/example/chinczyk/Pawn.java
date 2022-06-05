@@ -1,6 +1,7 @@
 package com.example.chinczyk;
 
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 
 public class Pawn extends Circle {
@@ -36,16 +37,23 @@ public class Pawn extends Circle {
 
     private void identifyPawnColor() {
         String id = this.getId();
-        if (id.startsWith("blue")) { this.pawnColor = PawnColor.BLUE; }
-        else if (id.startsWith("green")) { this.pawnColor = PawnColor.GREEN; }
-        else if (id.startsWith("red")) { this.pawnColor = PawnColor.RED; }
-        else if (id.startsWith("yellow")) { this.pawnColor = PawnColor.YELLOW; }
+        if (id.startsWith("blue")) {
+            this.pawnColor = PawnColor.BLUE;
+        } else if (id.startsWith("green")) {
+            this.pawnColor = PawnColor.GREEN;
+        } else if (id.startsWith("red")) {
+            this.pawnColor = PawnColor.RED;
+        } else if (id.startsWith("yellow")) {
+            this.pawnColor = PawnColor.YELLOW;
+        }
     }
 
 
     public void move() {
-        if(!canMove)
-        {
+        if (position.isAtHome()) {
+            canMove = false;
+        }
+        if (!canMove) {
             return;
         }
         position.makeStep(pawnColor);
@@ -75,5 +83,11 @@ public class Pawn extends Circle {
 
         GridPane.setColumnIndex(this, column);
         GridPane.setRowIndex(this, row);
+
+
     }
+    public boolean getAtHome () {
+        return position.isAtHome();
+    }
+
 }
