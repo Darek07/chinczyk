@@ -2,6 +2,7 @@ package com.example.chinczyk;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
@@ -89,9 +90,19 @@ public class Controller implements Initializable {
     private final Set<Pawn> yellowPawns = new HashSet<>(4);
 
     private List<Player> players;
+    private Player activePlayer;
     private int playersNumber = 0;
     public void setPlayers(int playersNumber) {
         this.playersNumber = playersNumber;
+    }
+
+    private void setPlayerAsActive(Player player) {
+        if (activePlayer != null) {
+            activePlayer.setPlayerTurn(false);
+        }
+
+        player.setPlayerTurn(true);
+        activePlayer = player;
     }
 
     private void initializePlayers() {
@@ -100,12 +111,40 @@ public class Controller implements Initializable {
         players = new ArrayList<>(4);
 
         Collections.addAll(players,
-            new Player(getPawnsByType(Pawn.PawnColor.BLUE)),
-            new Player(getPawnsByType(Pawn.PawnColor.GREEN)),
-            new Player(getPawnsByType(Pawn.PawnColor.YELLOW)),
-            new Player(getPawnsByType(Pawn.PawnColor.RED))
+                new Player(Pawn.PawnColor.BLUE, getPawnsByType(Pawn.PawnColor.BLUE)),
+                new Player(Pawn.PawnColor.GREEN, getPawnsByType(Pawn.PawnColor.GREEN)),
+                new Player(Pawn.PawnColor.YELLOW, getPawnsByType(Pawn.PawnColor.YELLOW)),
+                new Player(Pawn.PawnColor.RED, getPawnsByType(Pawn.PawnColor.RED))
         );
-        players.get(0).setPlayerTurn(true);
+
+        setPlayerAsActive(players.get(0));
+    }
+
+    private void runCollisionCheckAndCleanup() {
+        var activePawns = activePlayer.getPawns();
+
+        for (Player player : players) {
+            if (!activePlayer.getPawnColor().equals(player.getPawnColor())) {
+                var pawns = player.getPawns();
+                pawns.forEach(pawn -> {
+                    var position = pawn.getPosition();
+
+                    var column = position.getCol();
+                    var row = position.getRow();
+
+                    activePawns.forEach(activePawn -> {
+                        var activePawnPosition = activePawn.getPosition();
+                        if (
+                                column == activePawnPosition.getCol()
+                                        && row == activePawnPosition.getRow()
+                        ) {
+                            System.out.println("Collision");
+                            pawn.moveToYard();
+                        }
+                    });
+                });
+            }
+        }
     }
 
     @Override
@@ -114,16 +153,37 @@ public class Controller implements Initializable {
         startCells.put(PawnColor.GREEN, greenStart);
         startCells.put(PawnColor.RED, redStart);
         startCells.put(PawnColor.YELLOW, yellowStart);
+
         Collections.addAll(homeCells,
                 blueHome1, blueHome2, blueHome3, blueHome4,
                 greenHome1, greenHome2, greenHome3, greenHome4,
                 redHome1, redHome2, redHome3, redHome4,
                 yellowHome1, yellowHome2, yellowHome3, yellowHome4);
 
-        Collections.addAll(bluePawns, bluePawn1, bluePawn2, bluePawn3, bluePawn4);
-        Collections.addAll(greenPawns, greenPawn1, greenPawn2, greenPawn3, greenPawn4);
-        Collections.addAll(redPawns, redPawn1, redPawn2, redPawn3, redPawn4);
-        Collections.addAll(yellowPawns, yellowPawn1, yellowPawn2, yellowPawn3, yellowPawn4);
+        Collections.addAll(bluePawns,
+                bluePawn1.setYard(blueYard1),
+                bluePawn2.setYard(blueYard2),
+                bluePawn3.setYard(blueYard3),
+                bluePawn4.setYard(blueYard4)
+        );
+        Collections.addAll(greenPawns,
+                greenPawn1.setYard(greenYard1),
+                greenPawn2.setYard(greenYard2),
+                greenPawn3.setYard(greenYard3),
+                greenPawn4.setYard(greenYard4)
+        );
+        Collections.addAll(redPawns,
+                redPawn1.setYard(redYard1),
+                redPawn2.setYard(redYard2),
+                redPawn3.setYard(redYard3),
+                redPawn4.setYard(redYard4)
+        );
+        Collections.addAll(yellowPawns,
+                yellowPawn1.setYard(yellowYard1),
+                yellowPawn2.setYard(yellowYard2),
+                yellowPawn3.setYard(yellowYard3),
+                yellowPawn4.setYard(yellowYard4)
+        );
 
         Stream.of(bluePawns, greenPawns, redPawns, yellowPawns)
                 .flatMap(Collection::stream)

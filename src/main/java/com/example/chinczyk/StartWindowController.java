@@ -82,6 +82,8 @@ public class StartWindowController implements Initializable {
             errorLabel.setText("Wystapil nieznany blad");
             errorLabel.setStyle("-fx-text-fill: red; -fx-font-size: 24px");
             submitButton.setDisable(true);
+
+            error.printStackTrace();
         }
     }
 
