@@ -7,6 +7,16 @@ public class Player {
     private final Set<Pawn> pawns;
     private boolean isPlayerTurn;
 
+    private int pawnsAtHome=0;
+
+    public void countPawnsAtHome(){
+        pawns.forEach(pawn -> {if(pawn.getAtHome()) pawnsAtHome++;});
+    }
+
+    public boolean winner() {
+        return pawns.stream().allMatch(Pawn::getAtHome);
+    }
+
     public Player(Set<Pawn> pawns) {
         this.pawns = pawns;
     }

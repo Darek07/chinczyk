@@ -1,6 +1,7 @@
 package com.example.chinczyk;
 
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 
 public class Pawn extends Circle {
@@ -36,6 +37,10 @@ public class Pawn extends Circle {
     }
 
     public void move() {
+        if (position.isAtHome())    {
+            canMove=false;
+            return;
+        }
         position.makeStep(pawnColor);
         GridPane.setColumnIndex(this, position.getCol());
         GridPane.setRowIndex(this, position.getRow());
@@ -43,5 +48,9 @@ public class Pawn extends Circle {
 
     public void setCanMove(boolean canMove) {
         this.canMove = canMove;
+    }
+
+    public boolean getAtHome() {
+        return position.isAtHome();
     }
 }

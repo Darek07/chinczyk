@@ -116,4 +116,8 @@ public class Position {
 	public int getRow() {
 		return (int) cell.getY();
 	}
+
+	public boolean isAtHome(){
+		 return cellType == CellType.HOME;
+	}
 }
