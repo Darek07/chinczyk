@@ -92,6 +92,13 @@ public class Controller implements Initializable {
     private List<Player> players;
     private Player activePlayer;
     private int playersNumber = 0;
+
+    @FXML
+    private Button showBluPositions;
+
+    @FXML
+    private Button changePlayersButton;
+
     public void setPlayers(int playersNumber) {
         this.playersNumber = playersNumber;
     }
@@ -190,6 +197,7 @@ public class Controller implements Initializable {
                 .forEach(Pawn::initialize);
 
         initializePlayers();
+        initHelpers();
     }
 
     public Set<Pawn> getPawnsByType(PawnColor type) {
@@ -207,5 +215,17 @@ public class Controller implements Initializable {
 
     public static Set<Circle> getHomeCells() {
         return homeCells;
+    }
+
+    private void initHelpers() {
+        showBluPositions.setOnAction(event -> this.runCollisionCheckAndCleanup());
+
+        changePlayersButton.setOnAction(event -> {
+            var newPlayer = activePlayer.getPawnColor().equals(PawnColor.BLUE)
+                    ? players.get(1)
+                    : players.get(0);
+
+            setPlayerAsActive(newPlayer);
+        });
     }
 }
