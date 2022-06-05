@@ -6,9 +6,11 @@ public class Player {
 
     private final Set<Pawn> pawns;
     private boolean isPlayerTurn;
+    private Pawn.PawnColor color;
 
-    public Player(Set<Pawn> pawns) {
+    public Player(Pawn.PawnColor color, Set<Pawn> pawns) {
         this.pawns = pawns;
+        this.color = color;
     }
 
     public void setPlayerTurn(boolean playerTurn) {
@@ -19,5 +21,13 @@ public class Player {
         } else {
             pawns.forEach(pawn -> pawn.setCanMove(false));
         }
+    }
+
+    public Pawn.PawnColor getPawnColor() {
+        return this.color;
+    }
+
+    public Set<Pawn> getPawns() {
+        return this.pawns;
     }
 }
