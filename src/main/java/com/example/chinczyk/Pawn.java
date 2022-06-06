@@ -14,11 +14,6 @@ public class Pawn extends Circle {
 
     public Pawn() {
         this.canMove = false;
-        setOnMousePressed(event -> {
-            if (canMove) {
-                move();
-            }
-        });
     }
 
     public void initialize() {
@@ -36,7 +31,12 @@ public class Pawn extends Circle {
         else if (id.startsWith("yellow")) { this.pawnColor = PawnColor.YELLOW; }
     }
 
+
     public void move() {
+        if(!canMove)
+        {
+            return;
+        }
         position.makeStep(pawnColor);
         GridPane.setColumnIndex(this, position.getCol());
         GridPane.setRowIndex(this, position.getRow());

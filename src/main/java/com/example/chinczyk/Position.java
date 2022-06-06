@@ -16,6 +16,8 @@ public class Position {
 	public static final Set<Circle> HOME_CELLS = Controller.getHomeCells();
 
 	private Point2D cell;
+
+
 	private CellType cellType = CellType.YARD;
 	private Direction dir = Direction.NONE;
 
@@ -28,6 +30,8 @@ public class Position {
 		changeCellType();
 		changeDir(pawnColor);
 	}
+
+
 
 	private void changeCellType() {
 		if (isAnyMatch(START_CELLS.values(), cell)) {
@@ -103,6 +107,10 @@ public class Position {
 				.get()
 				.getValue();
 		cell = new Point2D(GridPane.getColumnIndex(startCell), GridPane.getRowIndex(startCell));
+	}
+
+	public CellType getCellType() {
+		return cellType;
 	}
 
 	public Position(int col, int row) {

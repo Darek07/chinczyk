@@ -2,7 +2,6 @@ package com.example.chinczyk;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 import javafx.scene.image.ImageView;
 
@@ -90,8 +89,20 @@ public class Controller implements Initializable {
 
     @FXML
     public void pressKostka() {
+        int nextPlayer=(players.indexOf(activePlayer)+1)%playersNumber;
+        setPlayerAsActive(players.get(nextPlayer));
         int count_steps=dice.roll(diceImage);
+        if(count_steps!=6 && !activePlayer.isAnyOnBoard())
+        {
+            return;
+        }
+        //System.out.println(count_steps);
+        activePlayer.setDiceSteps(count_steps);
+        activePlayer.setPawnsCanMove(true);
+        runCollisionCheckAndCleanup();
     }
+
+
 
     private static final Map<PawnColor, Circle> startCells = new HashMap<>(4);
     private static final Set<Circle> homeCells = new HashSet<>(16);
@@ -112,6 +123,7 @@ public class Controller implements Initializable {
         if (activePlayer != null) {
             activePlayer.setPlayerTurn(false);
         }
+
 
         player.setPlayerTurn(true);
         activePlayer = player;
@@ -201,8 +213,8 @@ public class Controller implements Initializable {
                 .flatMap(Collection::stream)
                 .forEach(Pawn::initialize);
 
-        initializePlayers();
-        dice = new Dice();
+            initializePlayers();
+            dice = new Dice();
     }
 
     public Set<Pawn> getPawnsByType(PawnColor type) {
@@ -221,4 +233,5 @@ public class Controller implements Initializable {
     public static Set<Circle> getHomeCells() {
         return homeCells;
     }
+
 }
