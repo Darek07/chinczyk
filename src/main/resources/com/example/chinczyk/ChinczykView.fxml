@@ -5,8 +5,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import com.example.chinczyk.Pawn?>
+
 <GridPane fx:id="gridPane" prefHeight="911.0" prefWidth="897.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chinczyk.Controller">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -126,6 +130,10 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <ImageView fx:id="diceImage"  onMousePressed="#pressKostka" GridPane.columnIndex="5" GridPane.rowIndex="6" fitHeight="100.0" fitWidth="100.0" layoutX="92.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@dice1.png" />
+         </image></ImageView>
 
       <Pawn fx:id="bluePawn1" fill="#57b4ff" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="1" />
       <Pawn fx:id="bluePawn2" fill="#57b4ff" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="1" />

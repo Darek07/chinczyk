@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.*;
@@ -81,6 +82,17 @@ public class Controller implements Initializable {
     @FXML private Pawn yellowPawn3;
     @FXML private Pawn yellowPawn4;
 
+    @FXML
+    private ImageView diceImage;
+
+    private Dice dice;
+    public int count_steps;
+
+    @FXML
+    public void pressKostka() {
+        int count_steps=dice.roll(diceImage);
+    }
+
     private static final Map<PawnColor, Circle> startCells = new HashMap<>(4);
     private static final Set<Circle> homeCells = new HashSet<>(16);
 
@@ -125,24 +137,24 @@ public class Controller implements Initializable {
 
         for (Player player : players) {
             if (!activePlayer.getPawnColor().equals(player.getPawnColor())) {
-                var pawns = player.getPawns();
-                pawns.forEach(pawn -> {
-                    var position = pawn.getPosition();
+                    var pawns = player.getPawns();
+                    pawns.forEach(pawn -> {
+                        var position = pawn.getPosition();
 
-                    var column = position.getCol();
-                    var row = position.getRow();
+                        var column = position.getCol();
+                        var row = position.getRow();
 
-                    activePawns.forEach(activePawn -> {
-                        var activePawnPosition = activePawn.getPosition();
-                        if (
-                                column == activePawnPosition.getCol()
-                                        && row == activePawnPosition.getRow()
-                        ) {
-                            System.out.println("Collision");
-                            pawn.moveToYard();
-                        }
+                        activePawns.forEach(activePawn -> {
+                            var activePawnPosition = activePawn.getPosition();
+                            if (
+                                    column == activePawnPosition.getCol()
+                                            && row == activePawnPosition.getRow()
+                            ) {
+                                System.out.println("Collision");
+                                pawn.moveToYard();
+                            }
+                        });
                     });
-                });
             }
         }
     }
@@ -190,6 +202,7 @@ public class Controller implements Initializable {
                 .forEach(Pawn::initialize);
 
         initializePlayers();
+        dice = new Dice();
     }
 
     public Set<Pawn> getPawnsByType(PawnColor type) {
