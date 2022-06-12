@@ -96,7 +96,6 @@ public class Controller implements Initializable {
         {
             return;
         }
-        //System.out.println(count_steps);
         activePlayer.setDiceSteps(count_steps);
         activePlayer.setPawnsCanMove(true);
         runCollisionCheckAndCleanup();
