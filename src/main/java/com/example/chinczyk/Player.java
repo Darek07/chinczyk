@@ -7,8 +7,7 @@ public class Player {
     private final Set<Pawn> pawns;
     private boolean isPlayerTurn;
     private Pawn.PawnColor color;
-
-
+    private int throwsToGoOut;
     private int dice_steps;
 
 
@@ -17,6 +16,7 @@ public class Player {
     public Player(Pawn.PawnColor color, Set<Pawn> pawns) {
         this.pawns = pawns;
         this.color = color;
+        this.throwsToGoOut=0;
         for (Pawn pawn: this.pawns) {
             pawn.setOnMousePressed(mouseEvent -> {
                 for (int i=0;i<this.dice_steps;i++) {
@@ -72,11 +72,19 @@ public class Player {
         this.dice_steps = dice_steps;
     }
 
+    public void setThrowsToGoOut(int throwsToGoOut) {
+        this.throwsToGoOut = throwsToGoOut;
+    }
+
     public Pawn.PawnColor getPawnColor() {
         return this.color;
     }
 
     public Set<Pawn> getPawns() {
         return this.pawns;
+    }
+
+    public int getThrowsToGoOut() {
+        return throwsToGoOut;
     }
 }

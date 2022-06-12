@@ -92,7 +92,12 @@ public class Controller implements Initializable {
         int nextPlayer=(players.indexOf(activePlayer)+1)%playersNumber;
         setPlayerAsActive(players.get(nextPlayer));
         int count_steps=dice.roll(diceImage);
-        if(count_steps!=6 && !activePlayer.isAnyOnBoard())
+        if(count_steps==6 && activePlayer.getThrowsToGoOut()<3){
+            activePlayer.setThrowsToGoOut(activePlayer.getThrowsToGoOut()+1);
+            System.out.println(activePlayer.getThrowsToGoOut());
+            System.out.println(activePlayer.getPawnColor());
+        }
+        if((count_steps!=6 || activePlayer.getThrowsToGoOut()<3)  && !activePlayer.isAnyOnBoard())
         {
             return;
         }
