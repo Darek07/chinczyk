@@ -2,12 +2,14 @@ package com.example.chinczyk;
 
 import java.util.Set;
 
+import static com.example.chinczyk.Position.CellType.START;
+
 public class Player {
 
     private final Set<Pawn> pawns;
     private boolean isPlayerTurn;
     private Pawn.PawnColor color;
-    private int throwsToGoOut;
+    private boolean throwsToGoOut;
     private int dice_steps;
 
 
@@ -16,7 +18,7 @@ public class Player {
     public Player(Pawn.PawnColor color, Set<Pawn> pawns) {
         this.pawns = pawns;
         this.color = color;
-        this.throwsToGoOut=0;
+        this.throwsToGoOut=false;
         for (Pawn pawn: this.pawns) {
             pawn.setOnMousePressed(mouseEvent -> {
                 for (int i=0;i<this.dice_steps;i++) {
@@ -37,7 +39,7 @@ public class Player {
     public boolean isAnyOnBoard()
     {
         for (Pawn pawn: pawns) {
-            if(pawn.getPosition().getCellType()== Position.CellType.START || pawn.getPosition().getCellType()== Position.CellType.DEFAULT)
+            if(pawn.getPosition().getCellType()== START || pawn.getPosition().getCellType()== Position.CellType.DEFAULT)
             {
                 return true;
             }
@@ -45,23 +47,37 @@ public class Player {
         return false;
     }
 
+
     public boolean isOnBoard(Pawn pawn)
     {
-        return pawn.getPosition().getCellType() == Position.CellType.START || pawn.getPosition().getCellType() == Position.CellType.DEFAULT;
+        return pawn.getPosition().getCellType() == START || pawn.getPosition().getCellType() == Position.CellType.DEFAULT;
     }
 
     public void setPawnsCanMove(boolean canMove)
     {
         if (isPlayerTurn && canMove) {
-            pawns.forEach(pawn -> pawn.setCanMove(true));
+             pawns.forEach(pawn -> pawn.setCanMove(true));
+            //System.out.println(dice_steps);
             if (dice_steps != 6) {
                 for (Pawn pawn : pawns) {
                     if (isOnBoard(pawn)) {
                         pawn.setCanMove(true);
                     }
+                    else
+                    {
+                        pawn.setCanMove(false);
+                    }
                 }
             } else {
-                pawns.forEach(pawn -> pawn.setCanMove(true));
+                setDiceSteps(1);
+                for(Pawn pawn : pawns)
+                {
+                    if(!isOnBoard(pawn))
+                    {
+                        setDiceSteps(1);
+                        pawn.setCanMove(true);
+                    }
+                }
             }
         } else {
             pawns.forEach(pawn -> pawn.setCanMove(false));
@@ -72,7 +88,7 @@ public class Player {
         this.dice_steps = dice_steps;
     }
 
-    public void setThrowsToGoOut(int throwsToGoOut) {
+    public void setThrowsToGoOut(boolean throwsToGoOut) {
         this.throwsToGoOut = throwsToGoOut;
     }
 
@@ -84,7 +100,7 @@ public class Player {
         return this.pawns;
     }
 
-    public int getThrowsToGoOut() {
+    public boolean isThrowsToGoOut() {
         return throwsToGoOut;
     }
 }
