@@ -6,10 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -101,6 +101,9 @@ public class Controller implements Initializable {
 
     @FXML
     public void pressKostka() throws IOException {
+        if (activePlayer.isPlayerStillMove()) {
+            return;
+        }
         int nextPlayer=(players.indexOf(activePlayer)+1)%playersNumber;
         setPlayerAsActive(players.get(nextPlayer));
         if(!activePlayer.isThrowsToGoOut()){

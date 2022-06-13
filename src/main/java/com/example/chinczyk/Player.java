@@ -121,6 +121,10 @@ public class Player {
         }
     }
 
+    public boolean isPlayerStillMove() {
+        return pawns.stream().anyMatch(Pawn::isCanMove);
+    }
+
     public void setDiceSteps(int dice_steps) {
         this.dice_steps = dice_steps;
     }
