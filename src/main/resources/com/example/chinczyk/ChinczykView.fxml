@@ -116,10 +116,10 @@
       <Circle fx:id="greenStart" fill="#29902f" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="7" />
       <Circle fill="WHITE" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="6" />
       <Circle fill="WHITE" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="5" />
-      <Polyline fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" strokeType="INSIDE" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-      <Polyline fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="180.0" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="11" />
-      <Polyline fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="270.0" strokeType="INSIDE" GridPane.rowIndex="4" />
-      <Polyline fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="90.0" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="8" />
+      <Polyline fx:id="blueArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" strokeType="INSIDE" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+      <Polyline fx:id="yellowArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="180.0" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+      <Polyline fx:id="redArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="270.0" strokeType="INSIDE" GridPane.rowIndex="4" />
+      <Polyline fx:id="greenArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="90.0" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="8" />
       <Button fx:id="pauseButton" mnemonicParsing="false" prefHeight="32.0" prefWidth="83.0" text="PAUSE" GridPane.columnIndex="5">
          <font>
             <Font size="18.0" />

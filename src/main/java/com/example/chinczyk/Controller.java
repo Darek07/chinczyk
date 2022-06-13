@@ -2,6 +2,8 @@ package com.example.chinczyk;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.image.ImageView;
 
@@ -10,8 +12,14 @@ import java.util.*;
 import java.util.stream.Stream;
 
 import com.example.chinczyk.Pawn.PawnColor;
+import javafx.scene.shape.Polyline;
 
 public class Controller implements Initializable {
+
+    @FXML private Polyline blueArrow;
+    @FXML private Polyline yellowArrow;
+    @FXML private Polyline redArrow;
+    @FXML private Polyline greenArrow;
 
     @FXML private Circle blueHome1;
     @FXML private Circle blueHome2;
@@ -131,6 +139,7 @@ public class Controller implements Initializable {
 
         player.setPlayerTurn(true);
         activePlayer = player;
+        playerTurnAnimation();
     }
 
     private void initializePlayers() {
@@ -238,4 +247,20 @@ public class Controller implements Initializable {
         return homeCells;
     }
 
+    private void clearTurnAnimation() {
+        yellowArrow.setFill(Color.BLACK);
+        redArrow.setFill(Color.BLACK);
+        blueArrow.setFill(Color.BLACK);
+        greenArrow.setFill(Color.BLACK);
+    }
+
+    private void playerTurnAnimation() {
+        clearTurnAnimation();
+        switch (activePlayer.getPawnColor()) {
+            case YELLOW -> yellowArrow.setFill(Color.YELLOW);
+            case RED -> redArrow.setFill(Color.RED);
+            case BLUE -> blueArrow.setFill(Color.BLUE);
+            case GREEN -> greenArrow.setFill(Color.GREEN);
+        }
+    }
 }
