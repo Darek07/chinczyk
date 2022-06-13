@@ -8,11 +8,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -30,136 +31,80 @@ public class Controller implements Initializable {
         return startInfo;
     }
 
-    @FXML
-    private Label startInfo;
-    @FXML
-    private Polyline blueArrow;
-    @FXML
-    private Polyline yellowArrow;
-    @FXML
-    private Polyline redArrow;
-    @FXML
-    private Polyline greenArrow;
+    @FXML private Label startInfo;
 
-    @FXML
-    private Circle blueHome1;
-    @FXML
-    private Circle blueHome2;
-    @FXML
-    private Circle blueHome3;
-    @FXML
-    private Circle blueHome4;
+    @FXML private Polyline blueArrow;
+    @FXML private Polyline yellowArrow;
+    @FXML private Polyline redArrow;
+    @FXML private Polyline greenArrow;
 
-    @FXML
-    private Circle blueYard1;
-    @FXML
-    private Circle blueYard2;
-    @FXML
-    private Circle blueYard3;
-    @FXML
-    private Circle blueYard4;
+    @FXML private Circle blueHome1;
+    @FXML private Circle blueHome2;
+    @FXML private Circle blueHome3;
+    @FXML private Circle blueHome4;
 
-    @FXML
-    private Circle blueStart;
+    @FXML private Circle blueYard1;
+    @FXML private Circle blueYard2;
+    @FXML private Circle blueYard3;
+    @FXML private Circle blueYard4;
 
-    @FXML
-    private Circle greenHome1;
-    @FXML
-    private Circle greenHome2;
-    @FXML
-    private Circle greenHome3;
-    @FXML
-    private Circle greenHome4;
+    @FXML private Circle blueStart;
 
-    @FXML
-    private Circle greenYard1;
-    @FXML
-    private Circle greenYard2;
-    @FXML
-    private Circle greenYard3;
-    @FXML
-    private Circle greenYard4;
+    @FXML private Circle greenHome1;
+    @FXML private Circle greenHome2;
+    @FXML private Circle greenHome3;
+    @FXML private Circle greenHome4;
 
-    @FXML
-    private Circle greenStart;
+    @FXML private Circle greenYard1;
+    @FXML private Circle greenYard2;
+    @FXML private Circle greenYard3;
+    @FXML private Circle greenYard4;
 
-    @FXML
-    private Circle redHome1;
-    @FXML
-    private Circle redHome2;
-    @FXML
-    private Circle redHome3;
-    @FXML
-    private Circle redHome4;
+    @FXML private Circle greenStart;
 
-    @FXML
-    private Circle redYard1;
-    @FXML
-    private Circle redYard2;
-    @FXML
-    private Circle redYard3;
-    @FXML
-    private Circle redYard4;
+    @FXML private Circle redHome1;
+    @FXML private Circle redHome2;
+    @FXML private Circle redHome3;
+    @FXML private Circle redHome4;
 
-    @FXML
-    private Circle redStart;
+    @FXML private Circle redYard1;
+    @FXML private Circle redYard2;
+    @FXML private Circle redYard3;
+    @FXML private Circle redYard4;
 
-    @FXML
-    private Circle yellowHome1;
-    @FXML
-    private Circle yellowHome2;
-    @FXML
-    private Circle yellowHome3;
-    @FXML
-    private Circle yellowHome4;
+    @FXML private Circle redStart;
 
-    @FXML
-    private Circle yellowYard1;
-    @FXML
-    private Circle yellowYard2;
-    @FXML
-    private Circle yellowYard3;
-    @FXML
-    private Circle yellowYard4;
+    @FXML private Circle yellowHome1;
+    @FXML private Circle yellowHome2;
+    @FXML private Circle yellowHome3;
+    @FXML private Circle yellowHome4;
 
-    @FXML
-    private Circle yellowStart;
+    @FXML private Circle yellowYard1;
+    @FXML private Circle yellowYard2;
+    @FXML private Circle yellowYard3;
+    @FXML private Circle yellowYard4;
 
-    @FXML
-    private Pawn bluePawn1;
-    @FXML
-    private Pawn bluePawn2;
-    @FXML
-    private Pawn bluePawn3;
-    @FXML
-    private Pawn bluePawn4;
+    @FXML private Circle yellowStart;
 
-    @FXML
-    private Pawn greenPawn1;
-    @FXML
-    private Pawn greenPawn2;
-    @FXML
-    private Pawn greenPawn3;
-    @FXML
-    private Pawn greenPawn4;
+    @FXML private Pawn bluePawn1;
+    @FXML private Pawn bluePawn2;
+    @FXML private Pawn bluePawn3;
+    @FXML private Pawn bluePawn4;
 
-    @FXML
-    private Pawn redPawn1;
-    @FXML
-    private Pawn redPawn2;
-    @FXML
-    private Pawn redPawn3;
-    @FXML
-    private Pawn redPawn4;
+    @FXML private Pawn greenPawn1;
+    @FXML private Pawn greenPawn2;
+    @FXML private Pawn greenPawn3;
+    @FXML private Pawn greenPawn4;
 
-    @FXML
-    private Pawn yellowPawn1;
-    @FXML
-    private Pawn yellowPawn2;
-    @FXML
-    private Pawn yellowPawn3;
-    @FXML
-    private Pawn yellowPawn4;
+    @FXML private Pawn redPawn1;
+    @FXML private Pawn redPawn2;
+    @FXML private Pawn redPawn3;
+    @FXML private Pawn redPawn4;
+
+    @FXML private Pawn yellowPawn1;
+    @FXML private Pawn yellowPawn2;
+    @FXML private Pawn yellowPawn3;
+    @FXML private Pawn yellowPawn4;
 
     @FXML
     private ImageView diceImage;
@@ -168,7 +113,10 @@ public class Controller implements Initializable {
 
     @FXML
     public void pressKostka() throws IOException {
-        int nextPlayer = (players.indexOf(activePlayer) + 1) % playersNumber;
+        if (activePlayer.isPlayerStillMove()) {
+            return;
+        }
+        int nextPlayer=(players.indexOf(activePlayer)+1)%playersNumber;
         setPlayerAsActive(players.get(nextPlayer));
         if (!activePlayer.isThrowsToGoOut()) {
             for (int i = 0; i < 3; i++) {

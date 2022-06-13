@@ -66,6 +66,10 @@ public class Pawn extends Circle {
         this.canMove = canMove;
     }
 
+    public boolean isCanMove() {
+        return canMove;
+    }
+
     public Position getPosition() {
         return position;
     }
