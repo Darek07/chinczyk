@@ -12,11 +12,22 @@ public class Pawn extends Circle {
     private PawnColor pawnColor;
     private boolean canMove;
 
+    public int getHowManySteps() {
+        return howManySteps;
+    }
+
+    public void setHowManySteps(int howManySteps) {
+        this.howManySteps = howManySteps;
+    }
+
+    private int howManySteps;
+
     public Pawn() {
         this.canMove = false;
     }
 
     public void initialize() {
+        howManySteps=0;
         int column = GridPane.getColumnIndex(this);
         int row = GridPane.getRowIndex(this);
         this.position = new Position(column, row);
