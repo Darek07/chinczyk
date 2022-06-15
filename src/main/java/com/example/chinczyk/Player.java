@@ -20,6 +20,15 @@ public class Player {
     public void countPawnsAtHome(){
         pawns.forEach(pawn -> {if(pawn.getAtHome()) pawnsAtHome++;});
     }
+    public boolean homeIsTaken(Position pawnPos){
+        //todo check if home position is vacant
+       for (Pawn pawn : this.pawns){
+            if (pawnPos.isAtHome() && pawn.getPosition()==pawnPos){
+              return true;
+            }
+        }
+       return false;
+    }
 
     public boolean winner() {
         return pawns.stream().allMatch(Pawn::getAtHome);
@@ -34,8 +43,11 @@ public class Player {
         this.throwsToGoOut=false;
         for (Pawn pawn: this.pawns) {
             pawn.setOnMousePressed(mouseEvent -> {
-                for (int i=0;i<pawn.getHowManySteps();i++) {
-                    pawn.move();
+                //todo if predicted position is home/default->move | if home position is taken/else->not
+                if (pawn.predictPosition(dice_steps)!=null) {//new
+                    for (int i = 0; i < pawn.getHowManySteps(); i++) {
+                        pawn.move();
+                    }
                 }
                 setPawnsCanMove(false);
             });

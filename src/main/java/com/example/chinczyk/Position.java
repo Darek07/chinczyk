@@ -1,6 +1,7 @@
 package com.example.chinczyk;
 
 import javafx.geometry.Point2D;
+import javafx.scene.control.Cell;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 
@@ -21,14 +22,16 @@ public class Position {
 	private CellType cellType = CellType.YARD;
 	private Direction dir = Direction.NONE;
 
-	public void makeStep(PawnColor pawnColor) {
-		if (cellType == CellType.YARD) {
+	public boolean makeStep(PawnColor pawnColor) {
+			if (cellType == CellType.YARD) {
 			putOnStartCell(pawnColor);
 		} else {
 			cell = cell.add(dir.coordination);
 		}
 		changeCellType();
 		changeDir(pawnColor);
+
+		return  true;
 	}
 
 
@@ -117,6 +120,12 @@ public class Position {
 		this.cell = new Point2D(col, row);
 	}
 
+	public Position(Position position) {
+		this.cell = position.cell;
+		this.cellType = position.cellType;
+		this.dir = position.dir;
+	}
+
 	public int getCol() {
 		return (int) cell.getX();
 	}
@@ -127,5 +136,8 @@ public class Position {
 
 	public boolean isAtHome(){
 		 return cellType == CellType.HOME;
+	}
+	public boolean isDefault(){
+		 return cellType == CellType.DEFAULT;
 	}
 }

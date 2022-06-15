@@ -1,5 +1,6 @@
 package com.example.chinczyk;
 
+import javafx.geometry.Point2D;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
@@ -50,9 +51,9 @@ public class Pawn extends Circle {
 
 
     public void move() {
-        if (position.isAtHome()) {
-            canMove = false;
-        }
+//        if (position.isAtHome()) {
+//            canMove = false;
+//        }
         if (!canMove) {
             return;
         }
@@ -90,4 +91,18 @@ public class Pawn extends Circle {
         return position.isAtHome();
     }
 
+    public Position predictPosition(int dice_steps){
+        //todo hypothetically move pawn & return position
+        Position hypPos = new Position(getPosition());
+        boolean prevIsHome;
+        for (int i=0;i<dice_steps;i++){
+            prevIsHome = hypPos.isAtHome();
+
+            hypPos.makeStep(pawnColor);
+            if (prevIsHome && !hypPos.isAtHome()){
+                return null;
+            }
+        }
+        return hypPos;
+    }
 }
