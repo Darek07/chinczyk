@@ -75,7 +75,7 @@ public class Position {
 			dir = dir.changeClockWise();
 	}
 
-	private boolean isAnyMatch(Collection<Circle> cells, Point2D currentCell) {
+	public boolean isAnyMatch(Collection<Circle> cells, Point2D currentCell) {
 		return cells
 				.stream()
 				.anyMatch(cell ->

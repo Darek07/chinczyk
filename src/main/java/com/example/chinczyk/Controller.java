@@ -3,6 +3,7 @@ package com.example.chinczyk;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
 import javafx.scene.layout.GridPane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,7 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.image.ImageView;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Stream;
@@ -210,6 +210,10 @@ public class Controller implements Initializable {
 
                 var column = position.getCol();
                 var row = position.getRow();
+
+                if (pawn.getPosition().isAnyMatch(Position.START_CELLS.values(), new Point2D(column, row))) {
+                    return;
+                }
 
                 activePawns.forEach(activePawn -> {
                     var activePawnPosition = activePawn.getPosition();
