@@ -126,8 +126,8 @@ public class Player {
     }
 
     public void moveToYard(Pawn pawn) {
-        Position newPos = pawn.getPosition().putOnYardCell(color, pawns);
-        pawn.setPosition(newPos);
+        pawn.getPosition().putOnYardCell(color, pawns);
+        pawn.updatePosition();
     }
 
     public boolean isPlayerStillMove() {
