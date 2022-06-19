@@ -130,7 +130,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="diceImage"  onMousePressed="#pressKostka" GridPane.columnIndex="5" GridPane.rowIndex="6" fitHeight="100.0" fitWidth="100.0" layoutX="92.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="diceImage" onMousePressed="#pressDice" GridPane.columnIndex="5" GridPane.rowIndex="6" fitHeight="100.0" fitWidth="100.0" layoutX="92.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@dice1.png" />
          </image></ImageView>

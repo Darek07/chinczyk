@@ -4,12 +4,13 @@ import java.util.Set;
 
 import static com.example.chinczyk.Position.CellType.HOME;
 import static com.example.chinczyk.Position.CellType.START;
+import static com.example.chinczyk.Pawn.PawnColor;
 
 public class Player {
 
     private final Set<Pawn> pawns;
+    private final PawnColor color;
     private boolean isPlayerTurn;
-    private Pawn.PawnColor color;
     private boolean throwsToGoOut;
     private int dice_steps;
     private int pawnAtHome;
@@ -18,7 +19,7 @@ public class Player {
 
 
 
-    public Player(Pawn.PawnColor color, Set<Pawn> pawns) {
+    public Player(PawnColor color, Set<Pawn> pawns) {
         this.pawns = pawns;
         this.color = color;
         this.isTheWinner=false;
@@ -27,6 +28,9 @@ public class Player {
         this.throwsToGoOut=false;
         for (Pawn pawn: this.pawns) {
             pawn.setOnMousePressed(mouseEvent -> {
+                if (!pawn.isCanMove()) {
+                    return;
+                }
                 for (int i=0;i<pawn.getHowManySteps();i++) {
                     pawn.move();
                 }
@@ -133,7 +137,7 @@ public class Player {
         this.throwsToGoOut = throwsToGoOut;
     }
 
-    public Pawn.PawnColor getPawnColor() {
+    public PawnColor getPawnColor() {
         return this.color;
     }
 
