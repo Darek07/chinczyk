@@ -92,7 +92,6 @@ public class Pawn extends Circle {
     }
 
     public Position predictPosition(int dice_steps){
-        //todo hypothetically move pawn & return position
         Position hypPos = new Position(getPosition());
         boolean prevIsHome;
         for (int i=0;i<dice_steps;i++){

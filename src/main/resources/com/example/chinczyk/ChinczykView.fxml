@@ -120,16 +120,6 @@
       <Polyline fx:id="yellowArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="180.0" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="11" />
       <Polyline fx:id="redArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="270.0" strokeType="INSIDE" GridPane.rowIndex="4" />
       <Polyline fx:id="greenArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="90.0" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="8" />
-      <Button fx:id="pauseButton" mnemonicParsing="false" prefHeight="32.0" prefWidth="83.0" text="PAUSE" GridPane.columnIndex="5">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Label fx:id="timeLabel" text="time" GridPane.columnIndex="5" GridPane.rowIndex="12">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
       <ImageView fx:id="diceImage"  onMousePressed="#pressKostka" GridPane.columnIndex="5" GridPane.rowIndex="6" fitHeight="100.0" fitWidth="100.0" layoutX="92.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@dice1.png" />
@@ -154,5 +144,12 @@
       <Pawn fx:id="yellowPawn2" fill="#ffe875" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
       <Pawn fx:id="yellowPawn3" fill="#ffe875" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="11" />
       <Pawn fx:id="yellowPawn4" fill="#ffe875" radius="18.0" stroke="#fff5f5" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+
+      <Label fx:id="startInfo" GridPane.columnIndex="5" GridPane.rowIndex="0" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+
    </children>
 </GridPane>

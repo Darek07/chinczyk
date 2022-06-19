@@ -1,7 +1,11 @@
 package com.example.chinczyk;
 
+import javafx.scene.layout.GridPane;
+
+import java.util.LinkedHashMap;
 import java.util.Set;
 
+import static com.example.chinczyk.Controller.getStartCells;
 import static com.example.chinczyk.Position.CellType.HOME;
 import static com.example.chinczyk.Position.CellType.START;
 
@@ -23,7 +27,7 @@ public class Player {
     public boolean homeIsTaken(Position pawnPos){
         //todo check if home position is vacant
        for (Pawn pawn : this.pawns){
-            if (pawnPos.isAtHome() && pawn.getPosition()==pawnPos){
+            if (pawnPos.isAtHome() && pawn.getPosition().getCol()==pawnPos.getCol() && pawn.getPosition().getRow()==pawnPos.getRow()){
               return true;
             }
         }
@@ -44,7 +48,8 @@ public class Player {
         for (Pawn pawn: this.pawns) {
             pawn.setOnMousePressed(mouseEvent -> {
                 //todo if predicted position is home/default->move | if home position is taken/else->not
-                if (pawn.predictPosition(dice_steps)!=null) {//new
+                Position predPos=pawn.predictPosition(pawn.getHowManySteps());
+                if (predPos!=null && !homeIsTaken(predPos)) {//new
                     for (int i = 0; i < pawn.getHowManySteps(); i++) {
                         pawn.move();
                     }
@@ -55,7 +60,24 @@ public class Player {
     }
 
 
+    public String startStats(Pawn.PawnColor startColor){
 
+        String stats = "";
+
+        int count =0;
+        int sCol=GridPane.getColumnIndex(getStartCells().get(startColor));
+        int sRow=GridPane.getRowIndex(getStartCells().get(startColor));
+
+        for (Pawn pawn: this.pawns) {
+            if ((pawn.getPosition().getCol()==sCol && pawn.getPosition().getRow()==sRow))
+            {
+                count++;
+            }
+        }
+        stats=stats.concat(startColor.toString() + ": " + count);
+
+        return stats;
+    }
     public void setPlayerTurn(boolean playerTurn) {
         isPlayerTurn = playerTurn;
 
