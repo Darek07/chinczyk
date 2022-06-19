@@ -109,15 +109,18 @@ public class Controller implements Initializable {
     private Dice dice;
     public int count_steps;
     private static int countPlayerMoveInARow = 0;
+    private boolean isCollisionHappened;
 
     @FXML
     public void pressDice() {
         if (activePlayer.isPlayerStillMove()) {
             return;
         }
+        isCollisionHappened = false;
+        runCollisionCheckAndCleanup();
 
         int nextPlayer = players.indexOf(activePlayer);
-        if (count_steps != 6) {
+        if (count_steps != 6 && !isCollisionHappened) {
             nextPlayer = (nextPlayer + 1) % playersNumber;
         }
         count_steps=dice.roll(diceImage);
@@ -151,7 +154,6 @@ public class Controller implements Initializable {
         if (activePlayer.checkTheWinner()) {
             System.exit(1);
         }
-        runCollisionCheckAndCleanup();
     }
 
 
@@ -217,6 +219,7 @@ public class Controller implements Initializable {
                     ) {
                         System.out.println("Collision");
                         player.moveToYard(pawn);
+                        isCollisionHappened = true;
                     }
                 });
             });

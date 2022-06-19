@@ -50,6 +50,10 @@ public class Pawn extends Circle {
             return;
         }
         position.makeStep(pawnColor);
+        updatePosition();
+    }
+
+    public void updatePosition() {
         GridPane.setColumnIndex(this, position.getCol());
         GridPane.setRowIndex(this, position.getRow());
     }
@@ -64,10 +68,6 @@ public class Pawn extends Circle {
 
     public Position getPosition() {
         return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
     }
 
     public boolean getAtHome () {

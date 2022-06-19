@@ -109,7 +109,7 @@ public class Position {
 		cell = new Point2D(GridPane.getColumnIndex(startCell), GridPane.getRowIndex(startCell));
 	}
 
-	public Position putOnYardCell(PawnColor pawnColor, Set<Pawn> pawns) {
+	public void putOnYardCell(PawnColor pawnColor, Set<Pawn> pawns) {
 		Set<Circle> yards = YARD_CELLS.get(pawnColor);
 		for (Circle yard : yards) {
 			int yardCol = GridPane.getColumnIndex(yard);
@@ -124,10 +124,8 @@ public class Position {
 			}
 			if (emptyYard) {
 				cell = new Point2D(yardCol, yardRow);
-				return this;
 			}
 		}
-		return null;
 	}
 
 	public CellType getCellType() {
