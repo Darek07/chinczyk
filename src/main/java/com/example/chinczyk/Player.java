@@ -8,12 +8,13 @@ import java.util.Set;
 import static com.example.chinczyk.Controller.getStartCells;
 import static com.example.chinczyk.Position.CellType.HOME;
 import static com.example.chinczyk.Position.CellType.START;
+import static com.example.chinczyk.Pawn.PawnColor;
 
 public class Player {
 
     private final Set<Pawn> pawns;
+    private final PawnColor color;
     private boolean isPlayerTurn;
-    private Pawn.PawnColor color;
     private boolean throwsToGoOut;
     private int dice_steps;
     private int pawnAtHome;
@@ -38,7 +39,7 @@ public class Player {
         return pawns.stream().allMatch(Pawn::getAtHome);
     }
 
-    public Player(Pawn.PawnColor color, Set<Pawn> pawns) {
+    public Player(PawnColor color, Set<Pawn> pawns) {
         this.pawns = pawns;
         this.color = color;
         this.isTheWinner=false;
@@ -47,7 +48,9 @@ public class Player {
         this.throwsToGoOut=false;
         for (Pawn pawn: this.pawns) {
             pawn.setOnMousePressed(mouseEvent -> {
-                //todo if predicted position is home/default->move | if home position is taken/else->not
+                if (!pawn.isCanMove()) {
+                    return;
+                }
                 Position predPos=pawn.predictPosition(pawn.getHowManySteps());
                 if (predPos!=null && !homeIsTaken(predPos)) {//new
                     for (int i = 0; i < pawn.getHowManySteps(); i++) {
@@ -174,7 +177,7 @@ public class Player {
         this.throwsToGoOut = throwsToGoOut;
     }
 
-    public Pawn.PawnColor getPawnColor() {
+    public PawnColor getPawnColor() {
         return this.color;
     }
 

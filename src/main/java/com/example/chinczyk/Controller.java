@@ -2,7 +2,6 @@ package com.example.chinczyk;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,14 +13,12 @@ import javafx.scene.shape.Circle;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
-import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Stream;
 
 import com.example.chinczyk.Pawn.PawnColor;
 import javafx.scene.shape.Polyline;
-import javafx.stage.Stage;
 
 import static java.lang.Thread.sleep;
 
@@ -110,41 +107,45 @@ public class Controller implements Initializable {
     private ImageView diceImage;
     private Dice dice;
     public int count_steps;
+    private static int countPlayerMoveInARow = 0;
 
     @FXML
-    public void pressKostka() throws IOException {
+    public void pressDice() {
         if (activePlayer.isPlayerStillMove()) {
             return;
         }
         int nextPlayer=(players.indexOf(activePlayer)+1)%playersNumber;
-        setPlayerAsActive(players.get(nextPlayer));
-        if (!activePlayer.isThrowsToGoOut()) {
-            for (int i = 0; i < 3; i++) {
-                count_steps = dice.roll(diceImage);
-                System.out.println(count_steps);
-                System.out.println(activePlayer.isThrowsToGoOut());
-                System.out.println(activePlayer.getPawnColor());
-                if (count_steps == 6) {
-                    activePlayer.setThrowsToGoOut(true);
-                    activePlayer.setDiceSteps(count_steps);
-                    break;
-                }
+        count_steps=dice.roll(diceImage);
+
+        if (!activePlayer.isThrowsToGoOut() && countPlayerMoveInARow >= 3) {
+            activePlayer.setThrowsToGoOut(true);
+            countPlayerMoveInARow = 0;
+            setPlayerAsActive(players.get(nextPlayer));
+        }
+
+        if(!activePlayer.isThrowsToGoOut()){
+            countPlayerMoveInARow++;
+            if(count_steps==6)
+            {
+                activePlayer.setThrowsToGoOut(true);
+                countPlayerMoveInARow = 0;
             }
-        } else {
-            count_steps = dice.roll(diceImage);
-            if (count_steps != 6 && !activePlayer.isAnyOnBoard()) {
+        }
+        else
+        {
+            setPlayerAsActive(players.get(nextPlayer));
+            if(count_steps!=6  && !activePlayer.isAnyOnBoard())
+            {
                 return;
             }
-            System.out.println(count_steps);
-            activePlayer.setDiceSteps(count_steps);
+            countPlayerMoveInARow = 0;
         }
-        System.out.println(count_steps);
+        activePlayer.setDiceSteps(count_steps);
         activePlayer.setPawnsCanMove(true);
 
         if (activePlayer.checkTheWinner()) {
             System.exit(1);
         }
-        System.out.println(count_steps);
         runCollisionCheckAndCleanup();
     }
 
