@@ -1,11 +1,11 @@
 package com.example.chinczyk;
 
 import javafx.geometry.Point2D;
-import javafx.scene.control.Cell;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.example.chinczyk.Pawn.PawnColor;
 
@@ -124,6 +124,8 @@ public class Position {
 			}
 			if (emptyYard) {
 				cell = new Point2D(yardCol, yardRow);
+				cellType = CellType.YARD;
+				dir = Direction.NONE;
 			}
 		}
 	}

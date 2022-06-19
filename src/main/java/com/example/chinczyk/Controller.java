@@ -25,6 +25,8 @@ import static java.lang.Thread.sleep;
 
 public class Controller implements Initializable {
 
+    @FXML public GridPane gridPane;
+
     public Label getStartInfo() {
         return startInfo;
     }
@@ -182,6 +184,10 @@ public class Controller implements Initializable {
         player.setPlayerTurn(true);
         activePlayer = player;
         playerTurnAnimation();
+        player.getPawns().forEach(pawn -> {
+            gridPane.getChildren().remove(pawn);
+            gridPane.getChildren().add(pawn);
+        });
     }
 
     private void initializePlayers() {

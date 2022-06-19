@@ -41,20 +41,20 @@
       <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Circle fx:id="redYard1" fill="#cd1414" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.rowIndex="1">
+      <Circle fx:id="redYard1" fill="#cd1414" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets />
          </GridPane.margin></Circle>
       <Circle fx:id="redYard4" fill="#cd1414" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Circle fx:id="redYard3" fill="#cd1414" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.rowIndex="2" />
+      <Circle fx:id="redYard3" fill="#cd1414" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
       <Circle fx:id="redYard2" fill="#cd1414" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Circle fx:id="greenYard1" fill="#29902f" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="10" />
       <Circle fx:id="greenYard4" fill="#29902f" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="11" />
       <Circle fx:id="greenYard3" fill="#29902f" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="11" />
       <Circle fx:id="greenYard2" fill="#29902f" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="10" />
-      <Circle fx:id="yellowYard1" fill="#ebce38" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.rowIndex="10" />
+      <Circle fx:id="yellowYard1" fill="#ebce38" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="10" />
       <Circle fx:id="yellowYard4" fill="#ebce38" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-      <Circle fx:id="yellowYard3" fill="#ebce38" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.rowIndex="11" />
+      <Circle fx:id="yellowYard3" fill="#ebce38" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="0" GridPane.rowIndex="11" />
       <Circle fx:id="yellowYard2" fill="#ebce38" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
       <Circle fx:id="blueYard1" fill="#1381e1" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="9" GridPane.rowIndex="1" />
       <Circle fx:id="blueYard4" fill="#1381e1" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" GridPane.columnIndex="10" GridPane.rowIndex="2" />
