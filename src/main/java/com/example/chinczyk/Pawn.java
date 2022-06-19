@@ -10,7 +10,6 @@ public class Pawn extends Circle {
     public enum PawnColor {RED, GREEN, YELLOW, BLUE}
 
     private Position position;
-    private Circle yardPosition;
     private PawnColor pawnColor;
     private boolean canMove;
 
@@ -38,23 +37,16 @@ public class Pawn extends Circle {
 
     private void identifyPawnColor() {
         String id = this.getId();
-        if (id.startsWith("blue")) {
-            this.pawnColor = PawnColor.BLUE;
-        } else if (id.startsWith("green")) {
-            this.pawnColor = PawnColor.GREEN;
-        } else if (id.startsWith("red")) {
-            this.pawnColor = PawnColor.RED;
-        } else if (id.startsWith("yellow")) {
-            this.pawnColor = PawnColor.YELLOW;
-        }
+        if (id.startsWith("blue")) { this.pawnColor = PawnColor.BLUE; }
+        else if (id.startsWith("green")) { this.pawnColor = PawnColor.GREEN; }
+        else if (id.startsWith("red")) { this.pawnColor = PawnColor.RED; }
+        else if (id.startsWith("yellow")) { this.pawnColor = PawnColor.YELLOW; }
     }
 
 
     public void move() {
-//        if (position.isAtHome()) {
-//            canMove = false;
-//        }
-        if (!canMove) {
+        if(!canMove)
+        {
             return;
         }
         position.makeStep(pawnColor);
@@ -74,23 +66,10 @@ public class Pawn extends Circle {
         return position;
     }
 
-    public Pawn setYard(Circle yardCircle) {
-        this.yardPosition = yardCircle;
-
-        return this;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
-    public void moveToYard() {
-        assert yardPosition != null;
-
-        int column = GridPane.getColumnIndex(this.yardPosition);
-        int row = GridPane.getRowIndex(this.yardPosition);
-
-        GridPane.setColumnIndex(this, column);
-        GridPane.setRowIndex(this, row);
-
-
-    }
     public boolean getAtHome () {
         return position.isAtHome();
     }
