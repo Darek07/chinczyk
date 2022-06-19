@@ -14,10 +14,9 @@ public class Position {
 
 	public static final Map<PawnColor, Circle> START_CELLS = Controller.getStartCells();
 	public static final Set<Circle> HOME_CELLS = Controller.getHomeCells();
+	public static final Map<PawnColor, Set<Circle>> YARD_CELLS = Controller.getYardCells();
 
 	private Point2D cell;
-
-
 	private CellType cellType = CellType.YARD;
 	private Direction dir = Direction.NONE;
 
@@ -30,8 +29,6 @@ public class Position {
 		changeCellType();
 		changeDir(pawnColor);
 	}
-
-
 
 	private void changeCellType() {
 		if (isAnyMatch(START_CELLS.values(), cell)) {
@@ -107,6 +104,27 @@ public class Position {
 				.get()
 				.getValue();
 		cell = new Point2D(GridPane.getColumnIndex(startCell), GridPane.getRowIndex(startCell));
+	}
+
+	public Position putOnYardCell(PawnColor pawnColor, Set<Pawn> pawns) {
+		Set<Circle> yards = YARD_CELLS.get(pawnColor);
+		for (Circle yard : yards) {
+			int yardCol = GridPane.getColumnIndex(yard);
+			int yardRow = GridPane.getRowIndex(yard);
+			boolean emptyYard = true;
+			for(Pawn pawn : pawns) {
+				Position pawnPos = pawn.getPosition();
+				if (pawnPos.getCol() == yardCol && pawnPos.getRow() == yardRow) {
+					emptyYard = false;
+					break;
+				}
+			}
+			if (emptyYard) {
+				cell = new Point2D(yardCol, yardRow);
+				return this;
+			}
+		}
+		return null;
 	}
 
 	public CellType getCellType() {

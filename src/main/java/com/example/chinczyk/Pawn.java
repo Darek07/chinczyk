@@ -8,7 +8,6 @@ public class Pawn extends Circle {
     public enum PawnColor {RED, GREEN, YELLOW, BLUE}
 
     private Position position;
-    private Circle yardPosition;
     private PawnColor pawnColor;
     private boolean canMove;
 
@@ -65,19 +64,7 @@ public class Pawn extends Circle {
         return position;
     }
 
-    public Pawn setYard(Circle yardCircle) {
-        this.yardPosition = yardCircle;
-
-        return this;
-    }
-
-    public void moveToYard() {
-        assert yardPosition != null;
-
-        int column = GridPane.getColumnIndex(this.yardPosition);
-        int row = GridPane.getRowIndex(this.yardPosition);
-
-        GridPane.setColumnIndex(this, column);
-        GridPane.setRowIndex(this, row);
+    public void setPosition(Position position) {
+        this.position = position;
     }
 }
