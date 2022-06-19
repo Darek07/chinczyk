@@ -120,7 +120,7 @@
       <Polyline fx:id="yellowArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="180.0" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="11" />
       <Polyline fx:id="redArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="270.0" strokeType="INSIDE" GridPane.rowIndex="4" />
       <Polyline fx:id="greenArrow" fill="BLACK" points="-33.55218505859375, -39.999996185302734, 34.4599609375, -39.999996185302734, 0.45391845703125, 1.4019393920898438, -33.55218505859375, -39.999996185302734" rotate="90.0" strokeType="INSIDE" GridPane.columnIndex="10" GridPane.rowIndex="8" />
-      <ImageView fx:id="diceImage"  onMousePressed="#pressKostka" GridPane.columnIndex="5" GridPane.rowIndex="6" fitHeight="100.0" fitWidth="100.0" layoutX="92.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="diceImage"  onMousePressed="#pressDice" GridPane.columnIndex="5" GridPane.rowIndex="6" fitHeight="100.0" fitWidth="100.0" layoutX="92.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@dice1.png" />
          </image></ImageView>
