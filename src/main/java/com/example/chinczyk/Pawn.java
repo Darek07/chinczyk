@@ -59,7 +59,11 @@ public class Pawn extends Circle {
     }
 
     public void setCanMove(boolean canMove) {
-        this.canMove = canMove;
+        if (getAtHome()) {
+            this.canMove = false;
+        }else {
+            this.canMove = canMove;
+        }
     }
 
     public boolean isCanMove() {

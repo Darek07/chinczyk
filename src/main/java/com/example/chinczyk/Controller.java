@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.example.chinczyk.Pawn.PawnColor;
@@ -120,6 +121,9 @@ public class Controller implements Initializable {
 
     @FXML
     public void pressDice() {
+        if (activePlayer.checkTheWinner()) {
+            changeToEnd();
+        }
         if (activePlayer.isPlayerStillMove()) {
             return;
         }
@@ -157,10 +161,6 @@ public class Controller implements Initializable {
         }
         activePlayer.setDiceSteps(count_steps);
         activePlayer.setPawnsCanMove(true);
-
-        if (activePlayer.checkTheWinner()) {
-            System.exit(1);
-        }
     }
 
 
@@ -283,6 +283,8 @@ public class Controller implements Initializable {
 
         initializePlayers();
         dice = new Dice();
+        // uncomment to activate bot
+//        Bot.init(diceImage, Stream.of(bluePawns, redPawns, greenPawns, yellowPawns).flatMap(Collection::stream).collect(Collectors.toSet()));
     }
 
     public Set<Pawn> getPawnsByType(PawnColor type) {
@@ -324,7 +326,9 @@ public class Controller implements Initializable {
     }
 
     private void changeToEnd() {
-        Stage stage = (Stage) gridPane.getParent().getScene().getWindow();
+        // uncomment to activate bot
+//        Bot.stop();
+        Stage stage = (Stage) diceImage.getScene().getWindow();
 
         try {
             URL resource = getClass().getResource("EndWindowView.fxml");

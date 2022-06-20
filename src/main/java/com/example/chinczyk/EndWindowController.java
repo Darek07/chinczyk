@@ -38,7 +38,7 @@ public class EndWindowController implements Initializable {
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
 		try {
-			URL resource = getClass().getResource("EndWindowView.fxml");
+			URL resource = getClass().getResource("StartWindowView.fxml");
 			assert resource != null;
 			FXMLLoader loader = new FXMLLoader(resource);
 			Parent root = loader.load();
