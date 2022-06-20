@@ -131,16 +131,30 @@ public class Controller implements Initializable {
         runCollisionCheckAndCleanup();
 
         int nextPlayer = players.indexOf(activePlayer);
-        if (count_steps != 6 && !isCollisionHappened) {
+        if (count_steps != 6 && !isCollisionHappened && activePlayer.isThrowsToGoOut()) {
             nextPlayer = (nextPlayer + 1) % playersNumber;
         }
-        count_steps=dice.roll(diceImage);
 
-        if (!activePlayer.isThrowsToGoOut() && countPlayerMoveInARow >= 3) {
+        if (countPlayerMoveInARow >= 3) {
             activePlayer.setThrowsToGoOut(true);
             countPlayerMoveInARow = 0;
+            nextPlayer = (nextPlayer + 1) % playersNumber;
             setPlayerAsActive(players.get(nextPlayer));
         }
+
+        Player currentActivePlayer = activePlayer;
+        setPlayerAsActive(players.get(nextPlayer));
+        if (count_steps != 6 && !activePlayer.isAnyOnBoard() && activePlayer.isThrowsToGoOut()){
+            activePlayer.setThrowsToGoOut(false);
+            countPlayerMoveInARow = 0;
+        } else {
+            setPlayerAsActive(currentActivePlayer);
+        }
+
+        count_steps=dice.roll(diceImage);
+//        if (count_steps == 6) count_steps = 5;
+
+        System.out.println(countPlayerMoveInARow);
 
         if(!activePlayer.isThrowsToGoOut()){
             countPlayerMoveInARow++;
@@ -284,7 +298,7 @@ public class Controller implements Initializable {
         initializePlayers();
         dice = new Dice();
         // uncomment to activate bot
-//        Bot.init(diceImage, Stream.of(bluePawns, redPawns, greenPawns, yellowPawns).flatMap(Collection::stream).collect(Collectors.toSet()));
+//        SimpleBot.init(diceImage, Stream.of(bluePawns, redPawns, greenPawns, yellowPawns).flatMap(Collection::stream).collect(Collectors.toSet()));
     }
 
     public Set<Pawn> getPawnsByType(PawnColor type) {
@@ -326,8 +340,8 @@ public class Controller implements Initializable {
     }
 
     private void changeToEnd() {
-        // uncomment to activate bot
-//        Bot.stop();
+//         uncomment to activate bot
+//        SimpleBot.stop();
         Stage stage = (Stage) diceImage.getScene().getWindow();
 
         try {
