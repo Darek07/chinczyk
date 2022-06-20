@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0"
-      prefWidth="465.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chinczyk.StartWindowController">
-    <Label prefHeight="35.0" prefWidth="571.0" text="Koniec">
+      prefWidth="465.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chinczyk.EndWindowController">
+    <Label prefHeight="35.0" prefWidth="571.0" text="The End">
         <font>
             <Font name="System Bold" size="24.0"/>
         </font>
     </Label>
     <VBox prefHeight="93.0" prefWidth="568.0" alignment="CENTER">
-        <Label fx:id="errorLabel"/>
+        <Label fx:id="endLabel"/>
         <Button fx:id="submitButton" alignment="CENTER" layoutX="169.0" layoutY="39.0" mnemonicParsing="false"
-                text="Zakończ grę" textAlignment="CENTER"/>
+                text="Restart the game" textAlignment="CENTER"/>
     </VBox>
     <padding>
         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>

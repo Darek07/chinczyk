@@ -1,9 +1,12 @@
 package com.example.chinczyk;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,12 +17,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Stream;
 
 import com.example.chinczyk.Pawn.PawnColor;
 import javafx.scene.shape.Polyline;
+import javafx.stage.Stage;
 
 import static java.lang.Thread.sleep;
 
@@ -315,6 +320,35 @@ public class Controller implements Initializable {
             case RED -> redArrow.setFill(Color.RED);
             case BLUE -> blueArrow.setFill(Color.BLUE);
             case GREEN -> greenArrow.setFill(Color.GREEN);
+        }
+    }
+
+    private void changeToEnd() {
+        Stage stage = (Stage) gridPane.getParent().getScene().getWindow();
+
+        try {
+            URL resource = getClass().getResource("EndWindowView.fxml");
+            assert resource != null;
+            FXMLLoader loader = new FXMLLoader(resource);
+            Parent root = loader.load();
+
+            EndWindowController endController = loader.getController();
+
+            String name = null;
+            for (Player player : players) {
+                if (player.isTheWinner()) {
+                    name = player.getPawnColor().toString();
+                }
+            }
+            endController.setWinner(name);
+
+            Scene scene = new Scene(root);
+            stage.setTitle("C H I Ń C Z Y K");
+            stage.setScene(scene);
+            stage.setResizable(true);
+            stage.show();
+        } catch (IOException error) {
+            error.printStackTrace();
         }
     }
 }

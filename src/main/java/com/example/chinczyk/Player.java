@@ -56,6 +56,10 @@ public class Player {
                     for (int i = 0; i < pawn.getHowManySteps(); i++) {
                         pawn.move();
                     }
+                    if(pawn.getPosition().getCellType()==HOME)
+                    {
+                        addPawnsAtHome();
+                    }
                 }
                 setPawnsCanMove(false);
             });
@@ -151,17 +155,6 @@ public class Player {
             }
         } else {
             pawns.forEach(pawn -> pawn.setCanMove(false));
-        }
-
-        pawnAtHome=0;
-        for(Pawn pawn : pawns)
-        {
-            if(pawn.getPosition().getCellType()==HOME)
-            {
-                addPawnsAtHome();
-            }
-            System.out.println(pawnAtHome);
-            System.out.println(pawn.getPosition().getCellType());
         }
     }
 
